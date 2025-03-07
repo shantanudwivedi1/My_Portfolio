@@ -38,8 +38,8 @@ cd portfolio
 
 ## Live Demo
 
-Visit the live website: https://github.com/shantanudwivedi1/My_Portfolio.git
+Visit the live website: https://shantanudwivedi1.github.io/My_Portfolio/
 
 ## Contact
 
-Feel free to reach out to me at [your email] for any questions or collaboration opportunities. 
+Feel free to reach out to me at dshantanu63@gmail.com for any questions or collaboration opportunities. 
