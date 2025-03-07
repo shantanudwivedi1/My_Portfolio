@@ -38,7 +38,7 @@ cd portfolio
 
 ## Live Demo
 
-Visit the live website: [Your Portfolio URL]
+Visit the live website: https://github.com/shantanudwivedi1/My_Portfolio.git
 
 ## Contact
 
