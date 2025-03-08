@@ -26,7 +26,7 @@ A modern, responsive portfolio website showcasing my work and skills.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/shantanudwivedi1/My_Portfolio.git
 ```
 
 2. Open the project folder:
