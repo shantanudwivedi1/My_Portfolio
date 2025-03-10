@@ -1,12 +1,32 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+/*******************************
+ * Portfolio Website Stylesheet
+ * Author: Shantanu Dwivedi
+ * Version: 1.0
+ * 
+ * Table of Contents:
+ * 1. Variables - Custom properties for consistent theming
+ * 2. Reset and Base Styles - Normalized starting point
+ * 3. Navigation - Header and menu styling
+ * 4. Hero Section - Main landing area
+ * 5. Background Slideshow - Dynamic background images
+ * 6. CTA Buttons - Call-to-action button styles
+ * 7. Section Styles - Common section layouts
+ * 8. About Section - Personal introduction area
+ * 9. Skills Section - Technical expertise display
+ * 10. Projects Section - Work showcase
+ * 11. Testimonials Section - Client feedback
+ * 12. Contact Section - Communication forms
+ * 13. Footer - Copyright and bottom info
+ * 14. Animations - Custom motion effects
+ * 15. Media Queries - Responsive design rules
+ *******************************/
 
+/* 1. Variables - Theme colors and common values
+   - Defines the color scheme and reusable values
+   - Enables easy theme customization
+   - Maintains consistency across the site */
 :root {
+    /* Colors */
     --primary-color: #007ACC;      /* Professional blue */
     --primary-light: #3498db;      /* Lighter blue for hover states */
     --background-dark: #1A1A1A;    /* Near black background */
@@ -15,8 +35,21 @@
     --card-background: #242424;    /* Slightly lighter than background */
     --nav-background: rgba(26, 26, 26, 0.95); /* Semi-transparent dark background */
     --accent-color: #64FFDA;       /* Mint accent for highlights */
+    
+    /* Gradients */
     --gradient-start: #007ACC;     /* Gradient start color */
     --gradient-end: #00507D;       /* Gradient end color */
+}
+
+/* 2. Reset and Base Styles
+   - Normalizes browser differences
+   - Sets up basic typography
+   - Establishes core layout rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -30,7 +63,11 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation */
+/* 3. Navigation
+   - Fixed header with transparent background
+   - Responsive menu system
+   - Smooth hover effects
+   - Mobile hamburger menu */
 .navbar {
     position: fixed;
     top: 0;
@@ -50,6 +87,7 @@ body {
     background: rgba(26, 26, 26, 0.95);
 }
 
+/* Logo Styles */
 .logo {
     font-size: 2rem;
     font-weight: 700;
@@ -63,6 +101,7 @@ body {
     transform: translateY(-1px);
 }
 
+/* Navigation Links */
 .nav-links {
     display: flex;
     list-style: none;
@@ -80,6 +119,7 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Navigation Link Hover Effects */
 .nav-links a::before {
     content: '';
     position: absolute;
@@ -110,49 +150,36 @@ body {
     transform: scaleX(1);
 }
 
-/* Hero Section */
+/* 4. Hero Section
+   - Full-screen landing area
+   - Animated text elements
+   - Gradient overlays
+   - Responsive scaling */
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 0 8%;
-    position: relative;
     overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 122, 204, 0.1) 0%, transparent 50%);
-    z-index: 0;
+    background-color: var(--background-dark);
 }
 
 .hero-content {
-    max-width: 900px;
     position: relative;
-    z-index: 1;
+    z-index: 3;
+    width: 100%;
+    max-width: 900px;
 }
 
-.name-title {
-    font-size: 1.2rem;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: 0;
-    animation: fadeUp 1s ease 0.2s forwards;
-}
-
+/* Hero Text Styles */
 .hero h1 {
     font-size: 4.5rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
     background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0;
     animation: fadeUp 1s ease 0.4s forwards;
@@ -183,6 +210,7 @@ body {
     font-size: 3.5rem;
     background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0;
     animation: fadeUp 1s ease 0.6s forwards;
@@ -217,57 +245,128 @@ body {
     max-width: 600px;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 1.2rem 2.8rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent-color);
-    background: transparent;
-    border: 2px solid var(--accent-color);
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+/* 5. Background Slideshow
+   - Automated image rotation
+   - Smooth transitions
+   - Overlay effects
+   - Performance optimized */
+.background-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.background-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     opacity: 0;
-    animation: fadeUp 1s ease 1s forwards;
+    transition: opacity 2s ease-in-out;
+    z-index: 0;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.background-slideshow .slide.active {
+    opacity: 1;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.7));
     z-index: 1;
 }
 
-.cta-button::before {
+.hero::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--accent-color);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    background: radial-gradient(circle at 50% 50%, rgba(0, 122, 204, 0.1) 0%, transparent 50%);
+    z-index: 2;
+}
+
+/* 6. CTA Buttons
+   - Gradient hover effects
+   - Interactive animations
+   - Accessible focus states
+   - Mobile-friendly touch targets */
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 1s forwards;
+}
+
+.cta-primary, .cta-secondary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.5px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.cta-primary:hover, .cta-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(100, 255, 218, 0.1);
+}
+
+.cta-primary::before, .cta-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
     z-index: -1;
 }
 
-.cta-button:hover {
-    color: var(--background-dark);
-    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
-    transform: translateY(-2px);
+.cta-primary:hover::before, .cta-secondary:hover::before {
+    left: 100%;
 }
 
-.cta-button:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.cta-button:active {
+.cta-primary:active, .cta-secondary:active {
     transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Sections */
+/* 7. Section Styles
+   - Consistent spacing system
+   - Reusable layouts
+   - Typography hierarchy
+   - Animation triggers */
 section {
     padding: 100px 5%;
+    position: relative;
 }
 
 h2 {
@@ -277,7 +376,11 @@ h2 {
     color: var(--primary-color);
 }
 
-/* About Section */
+/* 8. About Section
+   - Grid-based layout
+   - Image hover effects
+   - Responsive text flow
+   - Profile image optimization */
 .about-content {
     max-width: 1000px;
     margin: 0 auto;
@@ -323,7 +426,11 @@ h2 {
     color: var(--text-secondary);
 }
 
-/* Skills Section */
+/* 9. Skills Section
+   - Card-based grid system
+   - Interactive hover states
+   - Icon integration
+   - Skill level indicators */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -371,6 +478,7 @@ h2 {
     font-size: 3.5rem;
     background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
@@ -382,7 +490,11 @@ h2 {
     margin-bottom: 1rem;
 }
 
-/* Projects Section */
+/* 10. Projects Section
+   - Project card layout
+   - Technology tag system
+   - Image galleries
+   - Link interactions */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -430,6 +542,7 @@ h2 {
     font-size: 1.8rem;
     background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
 }
@@ -461,7 +574,11 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* Testimonials Section */
+/* 11. Testimonials Section
+   - Carousel functionality
+   - Quote styling
+   - Author information
+   - Navigation dots */
 .testimonials {
     background: var(--card-background);
     padding: 100px 5%;
@@ -531,14 +648,17 @@ h2 {
     background: var(--primary-color);
 }
 
-/* Contact Section */
+/* 12. Contact Section
+   - Form validation styles
+   - Social media links
+   - Success/error states
+   - Accessibility features */
 .contact-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr 2fr;
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 .contact-info {
@@ -555,71 +675,72 @@ h2 {
 
 .contact-item i {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .social-links {
     display: flex;
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .social-links a {
-    color: var(--text-primary);
     font-size: 1.8rem;
-    transition: color 0.3s ease;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-5px);
 }
 
 .contact-form {
-    background: rgba(36, 36, 36, 0.8);
+    background: rgba(36, 36, 36, 0.6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2.5rem;
     border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
 
 .contact-form:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border-color: rgba(100, 255, 218, 0.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 1.2rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 5px;
     color: var(--text-primary);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.08);
     outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
 }
 
 .contact-form button {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    padding: 1rem 2rem;
+    background: var(--primary-color);
     color: var(--text-primary);
     border: none;
-    padding: 1.2rem 2.5rem;
-    border-radius: 50px;
-    font-size: 1.1rem;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .contact-form button::before {
@@ -629,28 +750,40 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
 }
 
 .contact-form button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 122, 204, 0.4);
+    color: var(--background-dark);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form button:hover::before {
-    transform: translateX(100%);
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
-/* Footer */
+/* 13. Footer
+   - Copyright information
+   - Social links
+   - Bottom navigation
+   - Legal information */
 footer {
     text-align: center;
     padding: 2rem;
-    background: var(--card-background);
+    background: rgba(26, 26, 26, 0.8);
+    color: var(--text-secondary);
 }
 
-/* Animations */
+/* 14. Animations
+   - Custom keyframes
+   - Performance optimization
+   - Reduced motion support
+   - Loading states */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -671,7 +804,11 @@ footer {
     }
 }
 
-/* Responsive Design */
+/* 15. Media Queries
+   - Mobile-first approach
+   - Tablet optimizations
+   - Desktop enhancements
+   - Print styles */
 .burger {
     display: none;
     cursor: pointer;
@@ -703,6 +840,7 @@ footer {
         padding: 2rem 0;
         gap: 2rem;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 999;
     }
 
     .nav-links.active {
@@ -742,10 +880,6 @@ footer {
 
     .burger:hover div {
         background: var(--accent-color);
-    }
-
-    .name-title {
-        font-size: 1rem;
     }
 
     .hero h1 {
@@ -796,13 +930,18 @@ footer {
         font-size: 1rem;
     }
 
-    .cta-button {
-        padding: 1rem 2.4rem;
+    .cta-primary, .cta-secondary {
+        padding: 1rem 2rem;
         font-size: 1rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
 }
 
-/* Enhanced scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -820,6 +959,7 @@ footer {
     background: var(--accent-color);
 }
 
+/* Form Status Messages */
 .form-status {
     margin-top: 1rem;
     padding: 1rem;

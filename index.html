@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags - Essential for SEO and proper rendering -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shantanu Dwivedi - Portfolio</title>
+
+    <!-- External Resources - CSS frameworks, fonts, and email service -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar Section
+         - Responsive navigation with mobile menu
+         - Contains logo and main menu links
+         - Includes hamburger menu for mobile view -->
     <nav class="navbar">
         <div class="logo">SD</div>
         <ul class="nav-links">
@@ -20,6 +26,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <!-- Mobile Navigation Toggle -->
         <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -27,11 +34,27 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
+    <!-- Hero Section
+         - Dynamic background slideshow with 4 rotating images
+         - Overlay for better text visibility
+         - Animated introduction text
+         - Call-to-action buttons -->
     <section id="home" class="hero">
+        <!-- Background Slideshow Container -->
+        <div class="background-slideshow">
+            <!-- Slideshow Images -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDcxfHx8ZW58MHx8fHx8');"></div>
+            <div class="slide" style="background-image: url('https://images.pexels.com/photos/919734/pexels-photo-919734.jpeg?auto=compress&cs=tinysrgb&w=1200');"></div>
+            <!-- Overlay for better text readability -->
+            <div class="slide-overlay"></div>
+        </div>
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1 class="animate-text">Hi, I'm <span class="highlight">Shantanu Dwivedi</span></h1>
             <p class="animate-text-delay"></p>
+            <!-- Call to Action Buttons -->
             <div class="cta-buttons">
                 <a href="#contact" class="cta-primary">Contact Me</a>
                 <a href="#projects" class="cta-secondary">View Projects</a>
@@ -39,13 +62,19 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section
+         - Professional profile image
+         - Personal introduction
+         - Background and expertise description
+         - Educational and professional journey -->
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
+            <!-- Profile Image -->
             <div class="profile-image">
-                <img src="img.png" alt="Shantanu Dwivedi" />
+                <img src="./images/img.png" alt="Shantanu Dwivedi" />
             </div>
+            <!-- About Text -->
             <div class="about-text">
                 <p>I am a passionate Full Stack Developer currently pursuing my Master's in Computer Application (MCA). With a strong foundation in web development technologies, I strive to create efficient and user-friendly applications that solve real-world problems.</p>
                 <p>My journey in technology has equipped me with both frontend and backend development skills, allowing me to build complete web solutions from concept to deployment.</p>
@@ -53,7 +82,11 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section
+         - Grid layout of technical skills
+         - Icon-based representation
+         - Includes both mastered and learning technologies
+         - Interactive card design -->
     <section id="skills" class="skills">
         <h2>Skills</h2>
         <div class="skills-grid">
@@ -88,7 +121,13 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section
+         - Showcase of key projects
+         - Each project card includes:
+           * Project title
+           * Description
+           * Technologies used
+         - Interactive grid layout -->
     <section id="projects" class="projects">
         <h2>Projects</h2>
         <div class="projects-grid">
@@ -123,7 +162,11 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section
+         - Sliding testimonial carousel
+         - Professional recommendations
+         - Includes author details and roles
+         - Navigation dots for manual control -->
     <section id="testimonials" class="testimonials">
         <h2>Testimonials</h2>
         <div class="testimonials-slider">
@@ -165,7 +208,12 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section
+         - Interactive contact form
+         - Email integration
+         - Social media links
+         - Direct contact information
+         - Form validation and status messages -->
     <section id="contact" class="contact">
         <h2>Contact Me</h2>
         <div class="contact-content">
@@ -197,10 +245,17 @@
         </div>
     </section>
 
+    <!-- Footer Section
+         - Copyright information
+         - Year updates automatically -->
     <footer>
         <p>&copy; 2024 Shantanu Dwivedi. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript Integration
+         - Main script for interactive features
+         - Form handling
+         - Animations and transitions -->
     <script src="script.js"></script>
 </body>
 </html> 
