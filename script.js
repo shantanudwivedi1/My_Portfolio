@@ -69,15 +69,43 @@ function initNavigation() {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
+    const navbar = document.querySelector('.navbar');
 
-    // Exit if elements are not found
-    if (!burger || !nav) return;
+    // Handle scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Handle active link highlighting
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(li => {
+            li.querySelector('a').classList.remove('active');
+            if (li.querySelector(`a[href="#${current}"]`)) {
+                li.querySelector('a').classList.add('active');
+            }
+        });
+    });
 
     // Toggle mobile navigation
     burger.addEventListener('click', () => {
         nav.classList.toggle('active');
+        burger.classList.toggle('toggle');
         
-        // Animate navigation links
+        // Animate links
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
                 link.style.animation = '';
@@ -85,9 +113,18 @@ function initNavigation() {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
         });
+    });
 
-        // Animate burger menu
-        burger.classList.toggle('toggle');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            burger.classList.remove('toggle');
+            
+            navLinks.forEach(link => {
+                link.style.animation = '';
+            });
+        }
     });
 
     // Smooth scrolling for navigation links
@@ -105,6 +142,10 @@ function initNavigation() {
                 if (nav.classList.contains('active')) {
                     nav.classList.remove('active');
                     burger.classList.remove('toggle');
+                    
+                    navLinks.forEach(link => {
+                        link.style.animation = '';
+                    });
                 }
             }
         });

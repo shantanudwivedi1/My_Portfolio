@@ -162,4 +162,4 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Contact
 For any queries or suggestions, feel free to reach out:
 - Email: dshantanu63@gmail.com
-- LinkedIn: [Shantanu Dwivedi](https://www.linkedin.com/in/shantanu-dwivedi-59b6721b7) 
+- LinkedIn: [Shantanu Dwivedi](https://www.linkedin.com/in/shantanu-dwivedi-59b6721b7)
