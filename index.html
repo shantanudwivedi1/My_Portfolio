@@ -10,10 +10,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-    <!-- Navigation Bar Section
-         - Responsive navigation with mobile menu
-         - Contains logo and main menu links
-         - Includes hamburger menu for mobile view -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">SD</div>
         <ul class="nav-links">
@@ -31,20 +28,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section
-         - Dynamic background slideshow with 4 rotating images
-         - Overlay for better text visibility
-         - Animated introduction text
-         - Call-to-action buttons -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
-        <!-- Background Slideshow Container -->
+        <!-- Background Slideshow -->
         <div class="background-slideshow">
-            <!-- Slideshow Images -->
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDcxfHx8ZW58MHx8fHx8');"></div>
             <div class="slide" style="background-image: url('https://images.pexels.com/photos/919734/pexels-photo-919734.jpeg?auto=compress&cs=tinysrgb&w=1200');"></div>
-            <!-- Overlay for better text readability -->
             <div class="slide-overlay"></div>
         </div>
         <!-- Hero Content -->
@@ -59,18 +50,13 @@
         </div>
     </section>
 
-    <!-- About Section
-         - Professional profile image
-         - Personal introduction
-         - Background and expertise description -->
+    <!-- About Section -->
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <!-- Profile Image -->
             <div class="profile-image">
                 <img src="./images/img.png" alt="Shantanu Dwivedi" />
             </div>
-            <!-- About Text -->
             <div class="about-text">
                 <p class="intro">I am a passionate Full Stack Developer currently pursuing my Master's in Computer Application (MCA). With a strong foundation in web development technologies, I strive to create efficient and user-friendly applications that solve real-world problems.</p>
                 
@@ -79,11 +65,7 @@
         </div>
     </section>
 
-    <!-- Skills Section
-         - Grid layout of technical skills
-         - Icon-based representation
-         - Includes both mastered and learning technologies
-         - Interactive card design -->
+    <!-- Skills Section -->
     <section id="skills" class="skills">
         <h2>Skills</h2>
         <div class="skills-grid">
@@ -118,13 +100,7 @@
         </div>
     </section>
 
-    <!-- Projects Section
-         - Showcase of key projects
-         - Each project card includes:
-           * Project title
-           * Description
-           * Technologies used
-         - Interactive grid layout -->
+    <!-- Projects Section -->
     <section id="projects" class="projects">
         <h2>Projects</h2>
         <div class="projects-grid">
@@ -159,11 +135,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section
-         - Sliding testimonial carousel
-         - Professional recommendations
-         - Includes author details and roles
-         - Navigation dots for manual control -->
+    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <h2>Testimonials</h2>
         <div class="testimonials-slider">
@@ -198,21 +170,11 @@
                 </div>
             </div>
         </div>
-        <div class="testimonial-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
     </section>
 
-    <!-- Contact Section
-         - Interactive contact form
-         - Email integration
-         - Social media links
-         - Direct contact information
-         - Form validation and status messages -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
+        <h2>Get In Touch</h2>
         <div class="contact-content">
             <div class="contact-info">
                 <div class="contact-item">
@@ -221,38 +183,32 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <p>+91 7078647609</p>
+                    <p>+91 9876543210</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Bangalore, India</p>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/shantanu-dwivedi-59b6721b7" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/shantanudwivedi1/Shan" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
+                    <a href="https://github.com/shantanudwivedi1" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shantanu-dwivedi-59b6721b7" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-            <form class="contact-form" id="contact-form">
-                <input type="text" name="from_name" placeholder="Name" required>
-                <input type="email" name="from_email" placeholder="Email" required>
-                <textarea name="message" placeholder="Message" required></textarea>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
                 <button type="submit">Send Message</button>
-                <div id="form-status" class="form-status"></div>
+                <div class="form-status"></div>
             </form>
         </div>
     </section>
 
-    <!-- Footer Section
-         - Copyright information
-         - Year updates automatically -->
     <footer>
-        <p>&copy; 2024 Shantanu Dwivedi. All rights reserved.</p>
+        <p>&copy; 2024 Shantanu Dwivedi. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript Integration
-         - Main script for interactive features
-         - Form handling
-         - Animations and transitions -->
     <script src="script.js"></script>
 </body>
 </html> 

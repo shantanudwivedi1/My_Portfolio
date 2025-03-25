@@ -1,14 +1,7 @@
-/**
- * Portfolio Website JavaScript
- * Author: Shantanu Dwivedi
- * Description: Handles all interactive functionality for the portfolio website
- */
 
-// ===============================
+
 // INITIALIZATION
-// ===============================
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all components
     initSlideshow();
     initNavigation();
     initScrollAnimations();
@@ -16,34 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonials();
     initContactForm();
     
-    // Add reveal class to sections for animations
     document.querySelectorAll('section').forEach(section => {
         section.classList.add('reveal');
     });
 });
 
-// ===============================
 // BACKGROUND SLIDESHOW
-// ===============================
 function initSlideshow() {
     const slides = document.querySelectorAll('.background-slideshow .slide');
     
-    // Exit if no slides are found
-    if (slides.length === 0) {
-        console.error('No slides found!');
-        return;
-    }
-    
-    console.log(`Found ${slides.length} slides`);
-    
-    // Remove any existing active classes
-    slides.forEach(slide => slide.classList.remove('active'));
+    if (slides.length === 0) return;
     
     let currentSlide = 0;
 
     // Make first slide visible initially
     slides[0].classList.add('active');
-    console.log('Activated first slide');
 
     function nextSlide() {
         // Fade out current slide
@@ -54,17 +34,13 @@ function initSlideshow() {
         
         // Fade in next slide
         slides[currentSlide].classList.add('active');
-        console.log(`Showing slide ${currentSlide + 1} of ${slides.length}`);
     }
 
-    // Change slide every 8 seconds (increased from 5 for better visibility)
+    // Change slide every 8 seconds
     setInterval(nextSlide, 8000);
-    console.log('Slideshow initialized with interval of 8 seconds');
 }
 
-// ===============================
 // NAVIGATION FUNCTIONALITY
-// ===============================
 function initNavigation() {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
@@ -152,9 +128,7 @@ function initNavigation() {
     });
 }
 
-// ===============================
 // SCROLL ANIMATIONS
-// ===============================
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.2,
@@ -175,13 +149,10 @@ function initScrollAnimations() {
     });
 }
 
-// ===============================
 // TYPING ANIMATION
-// ===============================
 function initTypingAnimation() {
     const typingElement = document.querySelector('.hero p');
     
-    // Exit if element is not found
     if (!typingElement) return;
     
     const text = "Full Stack Developer";
@@ -200,114 +171,131 @@ function initTypingAnimation() {
     setTimeout(typeWriter, 1500);
 }
 
-// ===============================
 // TESTIMONIALS SLIDER
-// ===============================
 function initTestimonials() {
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    const dots = document.querySelectorAll('.dot');
+    const testimonialsContainer = document.querySelector('.testimonials-slider');
+    const testimonials = document.querySelectorAll('.testimonial-card');
     
-    // Exit if elements are not found
-    if (testimonialCards.length === 0 || dots.length === 0) return;
+    if (!testimonialsContainer || testimonials.length === 0) return;
     
-    let currentTestimonial = 0;
-    let autoSlideInterval;
-
+    // Create dots container
+    const dotsContainer = document.createElement('div');
+    dotsContainer.classList.add('testimonial-dots');
+    
+    // Add dots based on number of testimonials
+    testimonials.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        
+        // Add click event to each dot
+        dot.addEventListener('click', () => {
+            showTestimonial(index);
+        });
+        
+        dotsContainer.appendChild(dot);
+    });
+    
+    // Add dots container to testimonials section
+    testimonialsContainer.appendChild(dotsContainer);
+    
+    // Show all testimonials initially, then hide all except first
+    testimonials.forEach((testimonial, index) => {
+        if (index !== 0) {
+            testimonial.style.display = 'none';
+        }
+    });
+    
+    // Function to show a specific testimonial
     function showTestimonial(index) {
         // Hide all testimonials
-        testimonialCards.forEach(card => {
-            card.style.display = 'none';
+        testimonials.forEach(testimonial => {
+            testimonial.style.display = 'none';
         });
         
-        // Remove active class from all dots
-        dots.forEach(dot => {
-            dot.classList.remove('active');
+        // Show selected testimonial
+        testimonials[index].style.display = 'block';
+        
+        // Update active dot
+        document.querySelectorAll('.dot').forEach((dot, dotIndex) => {
+            dot.classList.toggle('active', dotIndex === index);
         });
-
-        // Show current testimonial and activate corresponding dot
-        testimonialCards[index].style.display = 'block';
-        dots[index].classList.add('active');
-    }
-
-    // Initialize first testimonial
-    showTestimonial(currentTestimonial);
-
-    // Add click events to dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentTestimonial = index;
-            showTestimonial(currentTestimonial);
-            
-            // Reset auto-rotation timer
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        });
-    });
-
-    // Function to start auto-rotation
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-            showTestimonial(currentTestimonial);
-        }, 5000);
     }
     
-    // Start auto-rotation
-    startAutoSlide();
+    // Auto-rotate testimonials
+    let currentTestimonial = 0;
+    
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    // Change testimonial every 5 seconds
+    setInterval(nextTestimonial, 5000);
 }
 
-// ===============================
 // CONTACT FORM
-// ===============================
 function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
+    const form = document.querySelector('.contact-form');
     
-    // Exit if elements are not found
-    if (!contactForm || !formStatus) return;
-
-    // Initialize EmailJS
-    try {
-        emailjs.init("CJYofw80zIO6e09mp");
-    } catch (error) {
-        console.error("EmailJS initialization error:", error);
-        return;
-    }
-
-    contactForm.addEventListener('submit', function(e) {
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Show loading state
-        const submitButton = contactForm.querySelector('button');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-
-        // Get form data
-        const formData = new FormData(this);
+        const nameInput = form.querySelector('input[name="name"]');
+        const emailInput = form.querySelector('input[name="email"]');
+        const messageInput = form.querySelector('textarea[name="message"]');
+        const formStatus = document.querySelector('.form-status');
+        
+        if (!nameInput || !emailInput || !messageInput || !formStatus) return;
+        
+        // Simple validation
+        if (!nameInput.value || !emailInput.value || !messageInput.value) {
+            formStatus.textContent = 'Please fill in all fields';
+            formStatus.classList.add('error');
+            formStatus.classList.remove('success');
+            formStatus.style.display = 'block';
+            return;
+        }
+        
+        // Simple email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value)) {
+            formStatus.textContent = 'Please enter a valid email address';
+            formStatus.classList.add('error');
+            formStatus.classList.remove('success');
+            formStatus.style.display = 'block';
+            return;
+        }
+        
+        // Prepare data for EmailJS
         const templateParams = {
-            from_name: formData.get('from_name'),
-            from_email: formData.get('from_email'),
-            reply_to: formData.get('from_email'),
-            message: formData.get('message'),
-            to_name: 'Shantanu Dwivedi'
+            from_name: nameInput.value,
+            from_email: emailInput.value,
+            message: messageInput.value
         };
-
-        // Send the email using EmailJS
-        emailjs.send('service_zlc9ojc', 'template_r2m3q9h', templateParams)
-            .then(function(response) {
-                console.log("SUCCESS!", response.status, response.text);
-                formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
-                formStatus.className = 'form-status success';
-                contactForm.reset();
+        
+        // Use EmailJS to send email
+        emailjs.send('service_id', 'template_id', templateParams)
+            .then(function() {
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.classList.add('success');
+                formStatus.classList.remove('error');
+                formStatus.style.display = 'block';
+                
+                // Reset form
+                form.reset();
+                
+                // Hide status message after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
             }, function(error) {
-                console.error("FAILED...", error);
-                formStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
-                formStatus.className = 'form-status error';
-            })
-            .finally(function() {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
+                formStatus.textContent = 'Failed to send message. Please try again.';
+                formStatus.classList.add('error');
+                formStatus.classList.remove('success');
+                formStatus.style.display = 'block';
             });
     });
 } 

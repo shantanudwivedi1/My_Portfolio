@@ -1,50 +1,40 @@
 /*******************************
- * Portfolio Website Stylesheet
- * Author: Shantanu Dwivedi
- * Version: 1.0
- * 
  * Table of Contents:
- * 1. Variables - Custom properties for consistent theming
- * 2. Reset and Base Styles - Normalized starting point
- * 3. Navigation - Header and menu styling
- * 4. Hero Section - Main landing area
- * 5. Background Slideshow - Dynamic background images
- * 6. CTA Buttons - Call-to-action button styles
- * 7. Section Styles - Common section layouts
- * 8. About Section - Personal introduction area
- * 9. Skills Section - Technical expertise display
- * 10. Projects Section - Work showcase
- * 11. Testimonials Section - Client feedback
- * 12. Contact Section - Communication forms
- * 13. Footer - Copyright and bottom info
- * 14. Animations - Custom motion effects
- * 15. Media Queries - Responsive design rules
+ * 1. Variables
+ * 2. Reset and Base Styles
+ * 3. Navigation
+ * 4. Hero Section
+ * 5. Background Slideshow
+ * 6. CTA Buttons
+ * 7. Section Styles
+ * 8. About Section
+ * 9. Skills Section
+ * 10. Projects Section
+ * 11. Testimonials Section
+ * 12. Contact Section
+ * 13. Footer
+ * 14. Animations
+ * 15. Media Queries
  *******************************/
 
-/* 1. Variables - Theme colors and common values
-   - Defines the color scheme and reusable values
-   - Enables easy theme customization
-   - Maintains consistency across the site */
+/* 1. Variables */
 :root {
     /* Colors */
     --primary-color: #007ACC;      /* Professional blue */
-    --primary-light: #3498db;      /* Lighter blue for hover states */
-    --background-dark: #1A1A1A;    /* Near black background */
-    --text-primary: #FFFFFF;       /* White text */
-    --text-secondary: #B0B0B0;     /* Subtle gray for secondary text */
-    --card-background: #242424;    /* Slightly lighter than background */
-    --nav-background: rgba(26, 26, 26, 0.95); /* Semi-transparent dark background */
-    --accent-color: #64FFDA;       /* Mint accent for highlights */
+    --primary-light: #3498db;      
+    --background-dark: #1A1A1A;    
+    --text-primary: #FFFFFF;       
+    --text-secondary: #B0B0B0;     
+    --card-background: #242424;    
+    --nav-background: rgba(26, 26, 26, 0.95); 
+    --accent-color: #64FFDA;       
     
     /* Gradients */
-    --gradient-start: #007ACC;     /* Gradient start color */
-    --gradient-end: #00507D;       /* Gradient end color */
+    --gradient-start: #007ACC;     
+    --gradient-end: #00507D;       
 }
 
-/* 2. Reset and Base Styles
-   - Normalizes browser differences
-   - Sets up basic typography
-   - Establishes core layout rules */
+/* 2. Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -63,11 +53,7 @@ body {
     line-height: 1.6;
 }
 
-/* 3. Navigation
-   - Fixed header with transparent background
-   - Responsive menu system
-   - Smooth hover effects
-   - Mobile hamburger menu */
+/* 3. Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -238,6 +224,7 @@ body {
         gap: 2rem;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         z-index: 999;
+        border-bottom: 1px solid var(--accent-color);
     }
     
     .nav-links.active {
@@ -262,11 +249,15 @@ body {
         border-radius: 50px;
         background: rgba(255, 255, 255, 0.05);
         transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1rem;
     }
     
     .nav-links a:hover {
         background: rgba(100, 255, 218, 0.1);
         transform: translateY(-2px);
+        letter-spacing: 3px;
     }
     
     .burger {
@@ -308,11 +299,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 4. Hero Section
-   - Full-screen landing area
-   - Animated text elements
-   - Gradient overlays
-   - Responsive scaling */
+/* 4. Hero Section */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -403,11 +390,7 @@ body {
     max-width: 600px;
 }
 
-/* 5. Background Slideshow
-   - Automated image rotation
-   - Smooth transitions
-   - Overlay effects
-   - Performance optimized */
+/* 5. Background Slideshow */
 .background-slideshow {
     position: absolute;
     top: 0;
@@ -484,11 +467,7 @@ body {
     z-index: 2;
 }
 
-/* 6. CTA Buttons
-   - Gradient hover effects
-   - Interactive animations
-   - Accessible focus states
-   - Mobile-friendly touch targets */
+/* 6. CTA Buttons */
 .cta-buttons {
     display: flex;
     gap: 1.5rem;
@@ -543,11 +522,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* 7. Section Styles
-   - Consistent spacing system
-   - Reusable layouts
-   - Typography hierarchy
-   - Animation triggers */
+/* 7. Section Styles */
 section {
     padding: 100px 5%;
     position: relative;
@@ -560,11 +535,7 @@ h2 {
     color: var(--primary-color);
 }
 
-/* 8. About Section
-   - Grid-based layout
-   - Image hover effects
-   - Responsive text flow
-   - Profile image optimization */
+/* 8. About Section */
 .about-content {
     max-width: 1000px;
     margin: 0 auto;
@@ -698,11 +669,7 @@ h2 {
     }
 }
 
-/* 9. Skills Section
-   - Card-based grid system
-   - Interactive hover states
-   - Icon integration
-   - Skill level indicators */
+/* 9. Skills Section */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -762,11 +729,7 @@ h2 {
     margin-bottom: 1rem;
 }
 
-/* 10. Projects Section
-   - Project card layout
-   - Technology tag system
-   - Image galleries
-   - Link interactions */
+/* 10. Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -846,11 +809,7 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* 11. Testimonials Section
-   - Carousel functionality
-   - Quote styling
-   - Author information
-   - Navigation dots */
+/* 11. Testimonials Section */
 .testimonials {
     background: var(--card-background);
     padding: 100px 5%;
@@ -920,11 +879,7 @@ h2 {
     background: var(--primary-color);
 }
 
-/* 12. Contact Section
-   - Form validation styles
-   - Social media links
-   - Success/error states
-   - Accessibility features */
+/* 12. Contact Section */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -1039,11 +994,7 @@ h2 {
     transform-origin: left;
 }
 
-/* 13. Footer
-   - Copyright information
-   - Social links
-   - Bottom navigation
-   - Legal information */
+/* 13. Footer */
 footer {
     text-align: center;
     padding: 2rem;
@@ -1051,11 +1002,7 @@ footer {
     color: var(--text-secondary);
 }
 
-/* 14. Animations
-   - Custom keyframes
-   - Performance optimization
-   - Reduced motion support
-   - Loading states */
+/* 14. Animations */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -1076,11 +1023,7 @@ footer {
     }
 }
 
-/* 15. Media Queries
-   - Mobile-first approach
-   - Tablet optimizations
-   - Desktop enhancements
-   - Print styles */
+/* 15. Media Queries */
 .burger {
     display: none;
     cursor: pointer;
