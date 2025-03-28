@@ -1,7 +1,8 @@
-
-
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize EmailJS with your public key
+    emailjs.init("CJYofw80zIO6e09mp"); // Replace with your actual public key
+    
     initSlideshow();
     initNavigation();
     initScrollAnimations();
@@ -277,7 +278,7 @@ function initContactForm() {
         };
         
         // Use EmailJS to send email
-        emailjs.send('service_id', 'template_id', templateParams)
+        emailjs.send('service_zlc9ojc', 'template_r2m3q9h', templateParams)
             .then(function() {
                 formStatus.textContent = 'Message sent successfully!';
                 formStatus.classList.add('success');
