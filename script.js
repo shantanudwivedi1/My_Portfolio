@@ -1,8 +1,7 @@
-// INITIALIZATION
+// Initialize EmailJS with your public key
+emailjs.init("CJYofw80zIO6e09mp");
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize EmailJS with your public key
-    emailjs.init("CJYofw80zIO6e09mp"); // Replace with your actual public key
-    
     initSlideshow();
     initNavigation();
     initScrollAnimations();
@@ -15,33 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// BACKGROUND SLIDESHOW
+// Slideshow functionality
 function initSlideshow() {
-    const slides = document.querySelectorAll('.background-slideshow .slide');
-    
-    if (slides.length === 0) return;
-    
+    const slides = document.querySelectorAll('.slide');
+    const overlay = document.querySelector('.slide-overlay');
     let currentSlide = 0;
-
-    // Make first slide visible initially
+    
+    // Show first slide
     slides[0].classList.add('active');
-
-    function nextSlide() {
-        // Fade out current slide
+    
+    // Change slide every 5 seconds
+    setInterval(() => {
         slides[currentSlide].classList.remove('active');
-        
-        // Move to next slide
         currentSlide = (currentSlide + 1) % slides.length;
-        
-        // Fade in next slide
         slides[currentSlide].classList.add('active');
-    }
-
-    // Change slide every 8 seconds
-    setInterval(nextSlide, 8000);
+    }, 5000);
 }
 
-// NAVIGATION FUNCTIONALITY
+// Navigation functionality
 function initNavigation() {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
@@ -129,7 +119,7 @@ function initNavigation() {
     });
 }
 
-// SCROLL ANIMATIONS
+// Scroll animations
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.2,
@@ -144,13 +134,12 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe all sections
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
 }
 
-// TYPING ANIMATION
+// Typing animation
 function initTypingAnimation() {
     const typingElement = document.querySelector('.hero p');
     
@@ -168,11 +157,10 @@ function initTypingAnimation() {
         }
     }
 
-    // Start typing animation after a delay
     setTimeout(typeWriter, 1500);
 }
 
-// TESTIMONIALS SLIDER
+// Testimonials slider
 function initTestimonials() {
     const testimonialsContainer = document.querySelector('.testimonials-slider');
     const testimonials = document.querySelectorAll('.testimonial-card');
@@ -189,7 +177,6 @@ function initTestimonials() {
         dot.classList.add('dot');
         if (index === 0) dot.classList.add('active');
         
-        // Add click event to each dot
         dot.addEventListener('click', () => {
             showTestimonial(index);
         });
@@ -197,7 +184,6 @@ function initTestimonials() {
         dotsContainer.appendChild(dot);
     });
     
-    // Add dots container to testimonials section
     testimonialsContainer.appendChild(dotsContainer);
     
     // Show all testimonials initially, then hide all except first
@@ -207,23 +193,18 @@ function initTestimonials() {
         }
     });
     
-    // Function to show a specific testimonial
     function showTestimonial(index) {
-        // Hide all testimonials
         testimonials.forEach(testimonial => {
             testimonial.style.display = 'none';
         });
         
-        // Show selected testimonial
         testimonials[index].style.display = 'block';
         
-        // Update active dot
         document.querySelectorAll('.dot').forEach((dot, dotIndex) => {
             dot.classList.toggle('active', dotIndex === index);
         });
     }
     
-    // Auto-rotate testimonials
     let currentTestimonial = 0;
     
     function nextTestimonial() {
@@ -231,11 +212,10 @@ function initTestimonials() {
         showTestimonial(currentTestimonial);
     }
     
-    // Change testimonial every 5 seconds
     setInterval(nextTestimonial, 5000);
 }
 
-// CONTACT FORM
+// Contact form functionality
 function initContactForm() {
     const form = document.querySelector('.contact-form');
     
@@ -251,7 +231,7 @@ function initContactForm() {
         
         if (!nameInput || !emailInput || !messageInput || !formStatus) return;
         
-        // Simple validation
+        // Form validation
         if (!nameInput.value || !emailInput.value || !messageInput.value) {
             formStatus.textContent = 'Please fill in all fields';
             formStatus.classList.add('error');
@@ -260,7 +240,7 @@ function initContactForm() {
             return;
         }
         
-        // Simple email validation
+        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(emailInput.value)) {
             formStatus.textContent = 'Please enter a valid email address';
@@ -277,7 +257,7 @@ function initContactForm() {
             message: messageInput.value
         };
         
-        // Use EmailJS to send email
+        // Send email using EmailJS
         emailjs.send('service_zlc9ojc', 'template_r2m3q9h', templateParams)
             .then(function() {
                 formStatus.textContent = 'Message sent successfully!';
@@ -285,10 +265,8 @@ function initContactForm() {
                 formStatus.classList.remove('error');
                 formStatus.style.display = 'block';
                 
-                // Reset form
                 form.reset();
                 
-                // Hide status message after 5 seconds
                 setTimeout(() => {
                     formStatus.style.display = 'none';
                 }, 5000);
