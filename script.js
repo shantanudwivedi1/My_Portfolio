@@ -1,5 +1,9 @@
 // Initialize EmailJS with your public key
-emailjs.init("CJYofw80zIO6e09mp");
+emailjs.init("CJYofw80zIO6e09mp").then(() => {
+    console.log('EmailJS initialized successfully');
+}).catch(error => {
+    console.error('EmailJS initialization failed:', error);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     initSlideshow();
@@ -217,19 +221,26 @@ function initTestimonials() {
 
 // Contact form functionality
 function initContactForm() {
-    const form = document.querySelector('.contact-form');
+    const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
     
-    if (!form) return;
+    if (!form) {
+        console.error('Contact form not found');
+        return;
+    }
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();
+        console.log('Form submitted');
         
         const nameInput = form.querySelector('input[name="name"]');
         const emailInput = form.querySelector('input[name="email"]');
         const messageInput = form.querySelector('textarea[name="message"]');
-        const formStatus = document.querySelector('.form-status');
         
-        if (!nameInput || !emailInput || !messageInput || !formStatus) return;
+        if (!nameInput || !emailInput || !messageInput) {
+            console.error('Form inputs not found');
+            return;
+        }
         
         // Form validation
         if (!nameInput.value || !emailInput.value || !messageInput.value) {
@@ -250,23 +261,28 @@ function initContactForm() {
             return;
         }
         
-        // Prepare data for EmailJS
         const templateParams = {
             from_name: nameInput.value,
             from_email: emailInput.value,
             message: messageInput.value
         };
         
-        // Send email using EmailJS
+        console.log('Sending email with params:', templateParams);
+        
+        // Send email to you
         emailjs.send('service_zlc9ojc', 'template_llnnvfg', templateParams)
             .then(function() {
+                console.log('Main email sent successfully');
+                
                 // Send auto-reply
-                emailjs.send('service_zlc9ojc', 'template_hrlzntf', {
+                return emailjs.send('service_zlc9ojc', 'template_hrlzntf', {
                     from_name: nameInput.value,
                     from_email: emailInput.value,
                     message: messageInput.value
                 });
-
+            })
+            .then(function() {
+                console.log('Auto-reply sent successfully');
                 formStatus.textContent = 'Message sent successfully!';
                 formStatus.classList.add('success');
                 formStatus.classList.remove('error');
@@ -277,7 +293,9 @@ function initContactForm() {
                 setTimeout(() => {
                     formStatus.style.display = 'none';
                 }, 5000);
-            }, function(error) {
+            })
+            .catch(function(error) {
+                console.error('Email sending failed:', error);
                 formStatus.textContent = 'Failed to send message. Please try again.';
                 formStatus.classList.add('error');
                 formStatus.classList.remove('success');
