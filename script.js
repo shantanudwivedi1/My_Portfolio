@@ -260,6 +260,13 @@ function initContactForm() {
         // Send email using EmailJS
         emailjs.send('service_zlc9ojc', 'template_llnnvfg', templateParams)
             .then(function() {
+                // Send auto-reply
+                emailjs.send('service_zlc9ojc', 'template_hrlzntf', {
+                    from_name: nameInput.value,
+                    from_email: emailInput.value,
+                    message: messageInput.value
+                });
+
                 formStatus.textContent = 'Message sent successfully!';
                 formStatus.classList.add('success');
                 formStatus.classList.remove('error');
