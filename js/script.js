@@ -180,42 +180,77 @@ document.addEventListener('DOMContentLoaded', function() {
     checkSkillBarsVisibility();
     revealOnScroll();
 
-    // Testimonial Slider
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const testimonialDots = document.querySelectorAll('.testimonial-controls .dot');
-    let currentTestimonial = 0;
-    const testimonialInterval = 6000; // 6 seconds
+    // Testimonial Slider - Even simpler implementation
+    function initTestimonialSlider() {
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const testimonialDots = document.querySelectorAll('.testimonial-controls .dot');
+        let currentTestimonial = 0;
+        let testimonialTimer;
+        const testimonialInterval = 6000; // 6 seconds
 
-    function changeTestimonial(n) {
-        testimonialSlides.forEach(slide => slide.classList.remove('active'));
-        testimonialDots.forEach(dot => dot.classList.remove('active'));
+        console.log('Initializing testimonial slider with', testimonialSlides.length, 'slides and', testimonialDots.length, 'dots');
+
+        // Direct function to change testimonial
+        function goToSlide(index) {
+            // Clear any existing timeout
+            clearInterval(testimonialTimer);
+            
+            // Update all slides and dots
+            testimonialSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            
+            testimonialDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            // Update current index
+            currentTestimonial = index;
+            
+            console.log('Changed to testimonial:', currentTestimonial);
+            
+            // Reset the timer
+            testimonialTimer = setInterval(() => {
+                const nextIndex = (currentTestimonial + 1) % testimonialSlides.length;
+                goToSlide(nextIndex);
+            }, testimonialInterval);
+        }
         
-        currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
+        // Set up direct onclick handlers for each dot
+        testimonialDots.forEach((dot, index) => {
+            // Remove any existing event handlers first
+            dot.onclick = null;
+            
+            // Add a direct onclick property
+            dot.onclick = function() {
+                console.log('Dot clicked directly:', index);
+                goToSlide(index);
+                return false; // Prevent default behavior
+            };
+        });
         
-        testimonialSlides[currentTestimonial].classList.add('active');
-        testimonialDots[currentTestimonial].classList.add('active');
+        // Add a click handler to the testimonial controls container for event delegation
+        const controlsContainer = document.querySelector('.testimonial-controls');
+        if (controlsContainer) {
+            controlsContainer.addEventListener('click', function(e) {
+                // Find the closest dot if we clicked on one or its child
+                const dotElement = e.target.closest('.dot');
+                if (dotElement) {
+                    const index = Array.from(testimonialDots).indexOf(dotElement);
+                    if (index !== -1) {
+                        console.log('Dot clicked via delegation:', index);
+                        goToSlide(index);
+                    }
+                }
+            });
+        }
+        
+        // Start with first slide
+        goToSlide(0);
     }
 
-    // Initialize the testimonial slider
-    changeTestimonial(0);
-
-    // Auto slide testimonials
-    let testimonialTimer = setInterval(() => {
-        changeTestimonial(currentTestimonial + 1);
-    }, testimonialInterval);
-
-    // Manual testimonial control with dots
-    testimonialDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            clearInterval(testimonialTimer);
-            changeTestimonial(index);
-            
-            // Restart auto slide
-            testimonialTimer = setInterval(() => {
-                changeTestimonial(currentTestimonial + 1);
-            }, testimonialInterval);
-        });
-    });
+    // Initialize testimonial slider after a small delay to ensure DOM is ready
+    setTimeout(initTestimonialSlider, 100);
 
     // Animate skill bars on scroll
     const skillBars = document.querySelectorAll('.skill-progress');
@@ -727,4 +762,31 @@ function addMatrixBackground() {
     
     // Run the animation
     setInterval(draw, 50);
-} 
+}
+
+// Global function for testimonial navigation (for inline click handlers)
+window.changeTestimonial = function(index) {
+    console.log('Global testimonial function called with index:', index);
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const testimonialDots = document.querySelectorAll('.testimonial-controls .dot');
+    
+    // Update slides
+    testimonialSlides.forEach((slide, i) => {
+        if (i === index) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
+        }
+    });
+    
+    // Update dots
+    testimonialDots.forEach((dot, i) => {
+        if (i === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+    
+    return false;
+}; 
