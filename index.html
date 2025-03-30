@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shantanu Dwivedi | Full Stack Developer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Canvas for Animation -->
+    <canvas id="background-canvas" class="background-canvas"></canvas>
+    
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>S<span>D</span> <small class="code-tag">&lt;/&gt;</small></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi there, I'm Shantanu Dwivedi</h1>
+                <h2 class="hero-subtitle">Full Stack Developer</h2>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">Discover</a>
+                    <a href="#contact" class="btn-secondary">Contact Me</a>
+                    <a href="downloads/ShantanuDwivedi_Resume.pdf" download class="btn-resume">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-description">Passionate full stack developer with expertise in creating modern, responsive web applications</p>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/img.jpeg" alt="Shantanu Dwivedi">
+                    <div class="image-overlay"></div>
+                    <div class="image-frame"></div>
+                </div>
+                <div class="about-text">
+                    <p>I am a passionate Full Stack Developer with a strong foundation in both Frontend and Backend technologies. My expertise includes creating responsive and interactive user interfaces using HTML, CSS, JavaScript, Bootstrap, and Tailwind. I'm also proficient with server-side technologies like Node.js, Express.js, and MongoDB, allowing me to build complete, scalable web applications.</p>
+                    <p>I have worked on projects like a Weather Dashboard and a Personal Portfolio Website, focusing on real-world problem-solving and user experience. Currently, I am deepening my expertise in the MERN Stack (MongoDB, Express.js, React, Node.js), learning advanced concepts such as REST APIs, authentication, and state management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-description">My technical expertise spans both frontend and backend development, allowing me to build complete web applications</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-bootstrap"></i>
+                                <span>Bootstrap</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-server"></i>
+                                <span>Express.js</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-database"></i>
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-code-branch"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-terminal"></i>
+                                <span>Command Line</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-description">Here are some of the projects I've worked on. Each one presented unique challenges that helped me grow as a developer</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project-1.jpg" alt="Portfolio Website">
+                    </div>
+                    <div class="project-content">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>A responsive portfolio website built with HTML, CSS, and JavaScript to showcase my projects and skills</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project-2.jpg" alt="Weather Dashboard">
+                    </div>
+                    <div class="project-content">
+                        <h3>WeatherNow</h3>
+                        <p>A weather dashboard web application that provides current and forecasted weather information for cities around the world</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>API Integration</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://weathernowsd.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="https://github.com/shantanudwivedi1/WeatherDashboard" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <p class="section-description">What people are saying about my work and expertise</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <p>"Shantanu's technical expertise and problem-solving abilities are exceptional. He developed our company's e-commerce platform with great attention to detail and implemented innovative solutions that significantly improved user experience."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Rajesh Kumar</h4>
+                                <p>CTO, TechVision India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"Working with Shantanu on our startup's web application was a great experience. His understanding of both frontend and backend technologies, combined with his commitment to deadlines, made him an invaluable team member."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Co-founder, InnovateHub Bangalore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"As his project guide during his MCA program, I've seen Shantanu's growth as a developer. His final year project demonstrated excellent coding practices and innovative thinking. He has a bright future in software development."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Dr. Amit Verma</h4>
+                                <p>Professor, Department of Computer Applications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-controls">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <p class="section-description">Feel free to reach out for collaborations or just a friendly chat</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <a href="mailto:dshantanu63@gmail.com" class="contact-item contact-button">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Email</h3>
+                            <p>dshantanu63@gmail.com</p>
+                        </div>
+                    </a>
+                    
+                    <a href="tel:+917078647609" class="contact-item contact-button">
+                        <div class="icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Phone</h3>
+                            <p>+91 7078647609</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://maps.google.com/?q=Aligarh,India" target="_blank" class="contact-item contact-button">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Location</h3>
+                            <p>Aligarh, India</p>
+                        </div>
+                    </a>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/shantanudwivedi1" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/shantanu-dwivedi-59b6721b7/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/__shantanu__dwivedi__/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="hidden" name="access_key" value="c4d1cab7-e84e-4a4a-bd21-b11d4d176ad6">
+                        <input type="hidden" name="subject" value="New Contact Message from Portfolio">
+                        <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                        <input type="checkbox" name="botcheck" style="display: none;">
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Submit</button>
+                    </form>
+                    <div id="thankYouMessage" style="display: none;" class="thank-you-message">
+                        <i class="fas fa-check-circle thank-you-icon"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your message has been sent successfully. I'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Shantanu Dwivedi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
